@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.base.rcp.intro.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="com.base.rcp.intro.Perspective"
+            id="com.base.rcp.perspective">
+      </perspective>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.base.rcp.application"
+            name="RCP Product">
+         <property
+               name="windowImages"
+               value="icons/alt_window_16.gif,icons/alt_window_32.gif">
+         </property>
+         <property
+               name="appName"
+               value="RCP Product">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <intro
+            class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            id="com.base.rcp.intro">
+      </intro>
+      <introProductBinding
+            introId="com.base.rcp.intro"
+            productId="com.base.rcp.product">
+      </introProductBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.config">
+      <config
+            introId="com.base.rcp.intro"
+            content="introContent.xml"
+            id="com.base.rcp.configId">
+         <presentation
+               home-page-id="root">
+            <implementation
+                  kind="html"
+                  os="win32,linux,macosx">
+            </implementation>
+         </presentation>
+      </config>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.configExtension">
+      <configExtension
+            content="ext.xml"
+            configId="com.base.rcp.configId">
+      </configExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="com.base.rcp.splashHandlers.InteractiveSplashHandler"
+            id="com.base.rcp.splashHandlers.interactive">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="com.base.rcp.product"
+            splashId="com.base.rcp.splashHandlers.interactive">
+      </splashHandlerProductBinding>
+      <splashHandler
+            class="com.base.rcp.splash.InteractiveSplashHandler"
+            id="com.base.rcp.splashHandler1">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="com.base.rcp.product.product"
+            splashId="com.base.rcp.splashHandler1">
+      </splashHandlerProductBinding>
+   </extension>
+
+</plugin>
