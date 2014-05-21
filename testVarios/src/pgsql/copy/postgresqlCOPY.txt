@@ -1,0 +1,88 @@
+http://neworganizing.com/content/blog/ersatz1
+
+CREATE TABLE public.zip_codes 
+(ZIP char(5), LATITUDE double precision, LONGITUDE double precision, 
+CITY varchar, STATE char(2), COUNTY varchar, ZIP_CLASS varchar);
+
+ZIP,LATITUDE,LONGITUDE,CITY,STATE,COUNTY,ZIP_CLASS
+'ECU',12.0,14.0,'Guayaquil','Guayas','Ecuador','class1'
+
+Notas:
+1. No colocar ' a los datos character
+
+
+comandillos
+
+--LOGUEARSE
+psql -U USUARIO -d 
+
+--SETEAR SCHEMA
+set search_path to 'schema'
+jdbc:postgresql://localhost:5432/mydatabase?searchpath=myschema
+
+--SETEAR ENCODING
+
+set client_encoding='LATIN1';
+set client_encoding='UTF-8';
+
+--COPY CSV
+COPY zip_codes FROM '/path/to/csv/file.csv' DELIMITER ',' CSV HEADER;
+
+--CAMBIARSE DE BASE
+
+#\c  DATABASE
+
+--EJECUTAR LA FUNCION
+select copiarchivo('D:\testcsv.csv');
+
+
+CREATE TABLE public.zip_codes
+(
+  zip character(5),
+  latitude double precision,
+  longitude double precision,
+  city character varying,
+  state character(2),
+  county character varying,
+  zip_class character varying
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.zip_codes
+  OWNER TO postgres;
+
+
+/***********************  FUNCION ****************/
+REATE OR REPLACE FUNCTION public.copiarchivo(rutarchivo text)
+  RETURNS integer AS
+$BODY$DECLARE 
+
+sentencia text;
+respuesta text;
+ct integer;
+
+BEGIN
+
+  sentencia:='COPY public.zip_codes FROM ''' 
+|| $1 || 
+''' CSV HEADER;'; 
+
+EXECUTE sentencia;
+
+GET DIAGNOSTICS ct= ROW_COUNT;
+--RAISE LOG 'My text here. rows: %', ct;
+
+
+ RAISE NOTICE 'Filename is -> %', $1; 
+  RAISE NOTICE 'My text here. rows: %', ct;
+
+
+
+
+return 1;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.copiarchivo(text)
+  OWNER TO postgres;

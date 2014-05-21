@@ -1,0 +1,4 @@
+ZIP,LATITUDE,LONGITUDE,CITY,STATE,COUNTY,ZIP_CLASS
+'ECU',12.0,14.0,'Guayaquil',G,'Ecuador','class1'
+'ECU',12.0,14.0,'Guayaquil',GA,'Ecuador','class2'
+'ECU',12.0,14.0,'Guayaquil',PU,'Ecuador','class1'
