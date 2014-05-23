@@ -3,6 +3,7 @@ package dev.christian.jooq;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import static dev.christian.jooq.gen.Tables.*;
 
 /**
  * Unit test for simple App.

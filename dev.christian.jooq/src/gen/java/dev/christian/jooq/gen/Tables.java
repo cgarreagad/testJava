@@ -14,6 +14,31 @@ package dev.christian.jooq.gen;
 public class Tables {
 
 	/**
+	 * The table jooq_test.author
+	 */
+	public static final dev.christian.jooq.gen.tables.Author AUTHOR = dev.christian.jooq.gen.tables.Author.AUTHOR;
+
+	/**
+	 * The table jooq_test.book
+	 */
+	public static final dev.christian.jooq.gen.tables.Book BOOK = dev.christian.jooq.gen.tables.Book.BOOK;
+
+	/**
+	 * The table jooq_test.book_store
+	 */
+	public static final dev.christian.jooq.gen.tables.BookStore BOOK_STORE = dev.christian.jooq.gen.tables.BookStore.BOOK_STORE;
+
+	/**
+	 * The table jooq_test.book_to_book_store
+	 */
+	public static final dev.christian.jooq.gen.tables.BookToBookStore BOOK_TO_BOOK_STORE = dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE;
+
+	/**
+	 * The table jooq_test.language
+	 */
+	public static final dev.christian.jooq.gen.tables.Language LANGUAGE = dev.christian.jooq.gen.tables.Language.LANGUAGE;
+
+	/**
 	 * The table jooq_test.user
 	 */
 	public static final dev.christian.jooq.gen.tables.User USER = dev.christian.jooq.gen.tables.User.USER;

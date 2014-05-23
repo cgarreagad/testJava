@@ -1,5 +1,7 @@
 package dev.christian.jooq;
 
+import dev.christian.jooq.gen.tables.Author;
+
 /**
  * Hello world!
  *
@@ -10,4 +12,5 @@ public class App
     {
         System.out.println( "Hello World!" );
     }
+    Author a;
 }

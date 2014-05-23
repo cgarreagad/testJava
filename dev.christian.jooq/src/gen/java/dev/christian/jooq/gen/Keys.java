@@ -23,13 +23,37 @@ public class Keys {
 	// UNIQUE and PRIMARY KEY definitions
 	// -------------------------------------------------------------------------
 
+	public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.AuthorRecord> KEY_AUTHOR_PRIMARY = UniqueKeys0.KEY_AUTHOR_PRIMARY;
+	public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.BookRecord> KEY_BOOK_PRIMARY = UniqueKeys0.KEY_BOOK_PRIMARY;
+	public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.BookStoreRecord> KEY_BOOK_STORE_NAME = UniqueKeys0.KEY_BOOK_STORE_NAME;
+	public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.BookToBookStoreRecord> KEY_BOOK_TO_BOOK_STORE_PRIMARY = UniqueKeys0.KEY_BOOK_TO_BOOK_STORE_PRIMARY;
+	public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.LanguageRecord> KEY_LANGUAGE_PRIMARY = UniqueKeys0.KEY_LANGUAGE_PRIMARY;
 
 	// -------------------------------------------------------------------------
 	// FOREIGN KEY definitions
 	// -------------------------------------------------------------------------
 
+	public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookRecord, dev.christian.jooq.gen.tables.records.AuthorRecord> FK_BOOK_AUTHOR = ForeignKeys0.FK_BOOK_AUTHOR;
+	public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookRecord, dev.christian.jooq.gen.tables.records.LanguageRecord> FK_BOOK_LANGUAGE = ForeignKeys0.FK_BOOK_LANGUAGE;
+	public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookToBookStoreRecord, dev.christian.jooq.gen.tables.records.BookStoreRecord> FK_B2BS_BOOK_STORE = ForeignKeys0.FK_B2BS_BOOK_STORE;
+	public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookToBookStoreRecord, dev.christian.jooq.gen.tables.records.BookRecord> FK_B2BS_BOOK = ForeignKeys0.FK_B2BS_BOOK;
 
 	// -------------------------------------------------------------------------
 	// [#1459] distribute members to avoid static initialisers > 64kb
 	// -------------------------------------------------------------------------
+
+	private static class UniqueKeys0 extends org.jooq.impl.AbstractKeys {
+		public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.AuthorRecord> KEY_AUTHOR_PRIMARY = createUniqueKey(dev.christian.jooq.gen.tables.Author.AUTHOR, dev.christian.jooq.gen.tables.Author.AUTHOR.ID);
+		public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.BookRecord> KEY_BOOK_PRIMARY = createUniqueKey(dev.christian.jooq.gen.tables.Book.BOOK, dev.christian.jooq.gen.tables.Book.BOOK.ID);
+		public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.BookStoreRecord> KEY_BOOK_STORE_NAME = createUniqueKey(dev.christian.jooq.gen.tables.BookStore.BOOK_STORE, dev.christian.jooq.gen.tables.BookStore.BOOK_STORE.NAME);
+		public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.BookToBookStoreRecord> KEY_BOOK_TO_BOOK_STORE_PRIMARY = createUniqueKey(dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE, dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE.NAME, dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID);
+		public static final org.jooq.UniqueKey<dev.christian.jooq.gen.tables.records.LanguageRecord> KEY_LANGUAGE_PRIMARY = createUniqueKey(dev.christian.jooq.gen.tables.Language.LANGUAGE, dev.christian.jooq.gen.tables.Language.LANGUAGE.ID);
+	}
+
+	private static class ForeignKeys0 extends org.jooq.impl.AbstractKeys {
+		public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookRecord, dev.christian.jooq.gen.tables.records.AuthorRecord> FK_BOOK_AUTHOR = createForeignKey(dev.christian.jooq.gen.Keys.KEY_AUTHOR_PRIMARY, dev.christian.jooq.gen.tables.Book.BOOK, dev.christian.jooq.gen.tables.Book.BOOK.AUTHOR_ID);
+		public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookRecord, dev.christian.jooq.gen.tables.records.LanguageRecord> FK_BOOK_LANGUAGE = createForeignKey(dev.christian.jooq.gen.Keys.KEY_LANGUAGE_PRIMARY, dev.christian.jooq.gen.tables.Book.BOOK, dev.christian.jooq.gen.tables.Book.BOOK.LANGUAGE_ID);
+		public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookToBookStoreRecord, dev.christian.jooq.gen.tables.records.BookStoreRecord> FK_B2BS_BOOK_STORE = createForeignKey(dev.christian.jooq.gen.Keys.KEY_BOOK_STORE_NAME, dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE, dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE.NAME);
+		public static final org.jooq.ForeignKey<dev.christian.jooq.gen.tables.records.BookToBookStoreRecord, dev.christian.jooq.gen.tables.records.BookRecord> FK_B2BS_BOOK = createForeignKey(dev.christian.jooq.gen.Keys.KEY_BOOK_PRIMARY, dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE, dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID);
+	}
 }

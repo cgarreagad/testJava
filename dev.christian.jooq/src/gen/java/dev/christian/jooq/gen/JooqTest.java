@@ -11,7 +11,7 @@ package dev.christian.jooq.gen;
 @java.lang.SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class JooqTest extends org.jooq.impl.SchemaImpl {
 
-	private static final long serialVersionUID = 1266916606;
+	private static final long serialVersionUID = 1641939395;
 
 	/**
 	 * The singleton instance of <code>jooq_test</code>
@@ -34,6 +34,11 @@ public class JooqTest extends org.jooq.impl.SchemaImpl {
 
 	private final java.util.List<org.jooq.Table<?>> getTables0() {
 		return java.util.Arrays.<org.jooq.Table<?>>asList(
+			dev.christian.jooq.gen.tables.Author.AUTHOR,
+			dev.christian.jooq.gen.tables.Book.BOOK,
+			dev.christian.jooq.gen.tables.BookStore.BOOK_STORE,
+			dev.christian.jooq.gen.tables.BookToBookStore.BOOK_TO_BOOK_STORE,
+			dev.christian.jooq.gen.tables.Language.LANGUAGE,
 			dev.christian.jooq.gen.tables.User.USER);
 	}
 }
