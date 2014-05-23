@@ -1,0 +1,4 @@
+[main] INFO  dev.christian.jooq.snipts.BeginTest  - SQL=select BOOK.TITLE, AUTHOR.FIRST_NAME, AUTHOR.LAST_NAME from BOOK join AUTHOR on BOOK.AUTHOR_ID = AUTHOR.ID where BOOK.PUBLISHED_IN = ?
+[main] INFO  dev.christian.jooq.snipets.BeginTest  - SQL=select BOOK.TITLE, AUTHOR.FIRST_NAME, AUTHOR.LAST_NAME from BOOK join AUTHOR on BOOK.AUTHOR_ID = AUTHOR.ID where BOOK.PUBLISHED_IN = ?
+[main] INFO  dev.christian.jooq.snipets.BeginTest  - SQL=select BOOK.TITLE, AUTHOR.FIRST_NAME, AUTHOR.LAST_NAME from BOOK join AUTHOR on BOOK.AUTHOR_ID = AUTHOR.ID where BOOK.PUBLISHED_IN = ?
+[main] INFO  dev.christian.jooq.snipets.BeginTest  - SQL=select `jooq_test`.`book`.`title`, `jooq_test`.`author`.`first_name`, `jooq_test`.`author`.`last_name` from `jooq_test`.`book` join `jooq_test`.`author` on `jooq_test`.`book`.`author_id` = `jooq_test`.`author`.`id` where `jooq_test`.`book`.`published_in` = ?
