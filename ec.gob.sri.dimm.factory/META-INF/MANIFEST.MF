@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Factory
+Bundle-SymbolicName: ec.gob.sri.dimm.factory; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: ec.gob.sri.dimm.factory.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms;bundle-version="3.5.101",
+ ec.gob.sri.dimm.api;bundle-version="1.2.4",
+ ec.gob.sri.dimm.abt.modelo;bundle-version="1.1.8",
+ ec.gob.sri.dimm.abt.ui;bundle-version="1.1.8",
+ org.eclipse.core.databinding,
+ org.eclipse.core.databinding.beans,
+ org.eclipse.core.databinding.observable,
+ org.eclipse.core.databinding.property,
+ org.eclipse.jface.databinding,
+ com.ibm.icu,
+ org.eclipse.pde.runtime;bundle-version="3.4.201"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.arguscob.com/arguscobv2.3" elementFormDefault="qualified"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arguscob.com/arguscobv2.3">
+
+	<xsd:element name="Arguscob" type="ArguscobType"/>
+	<xsd:complexType name="ArguscobType">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="Request" type="RequestType"/>
+			<xsd:element minOccurs="0" name="Response" type="ResponseType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RequestType">
+		<xsd:complexContent>
+			<xsd:extension base="BasicDataType"> </xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+
+	<xsd:complexType name="HFieldType">
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="value" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="DFieldType">
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="value" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="ResponseType">
+		<xsd:complexContent>
+			<xsd:extension base="BasicDataType">
+				<xsd:sequence>
+					<xsd:element name="Table" type="Table" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="sitemap" type="sitemapType" minOccurs="0"/>
+					<xsd:element maxOccurs="1" minOccurs="0" name="MenuItem" type="MenuItemType"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="MenuItemType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Items" type="ItemsType"/>
+		</xsd:sequence>
+		<xsd:attribute name="idopcion" type="xsd:integer"/>
+		<xsd:attribute name="etiqueta" type="xsd:string"/>
+		<xsd:attribute name="habilitado" type="xsd:boolean"/>
+		<xsd:attribute name="iconpath" type="xsd:string"/>
+		<xsd:attribute name="url" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ItemsType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="MenuItem" type="MenuItemType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Table">
+		<xsd:sequence>
+			<xsd:element name="Reg" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="RegType">
+							<xsd:anyAttribute namespace="##any"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RegType"> </xsd:complexType>
+
+	<xsd:complexType name="RegFieldType">
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="value" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="BasicDataType">
+		<xsd:sequence>
+			<xsd:element name="Header" type="HeaderType" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Data" type="DataType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="HeaderType">
+		<xsd:sequence>
+			<xsd:element name="HField" type="HFieldType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="DataType">
+		<xsd:sequence>
+			<xsd:element name="DField" type="DFieldType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="sitemapType">
+		<xsd:sequence>
+			<xsd:element name="Aplicacion" maxOccurs="unbounded" minOccurs="0">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="AplicacionType">
+							<xsd:sequence>
+								<xsd:element maxOccurs="unbounded" minOccurs="0" name="Menu">
+									<xsd:complexType>
+										<xsd:complexContent>
+											<xsd:extension base="MenuType">
+												<xsd:sequence>
+												<xsd:element maxOccurs="unbounded" minOccurs="0"
+												name="Opcion" type="OpcionType"/>
+												</xsd:sequence>
+											</xsd:extension>
+										</xsd:complexContent>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AplicacionType">
+		<xsd:complexContent>
+			<xsd:extension base="nodeType"> </xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MenuType">
+		<xsd:complexContent>
+			<xsd:extension base="nodeType"> </xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OpcionType">
+		<xsd:complexContent>
+			<xsd:extension base="nodeType"> </xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="nodeType">
+		<xsd:attribute name="Codigo"/>
+		<xsd:attribute name="enabled"/>
+		<xsd:attribute name="icon"/>
+		<xsd:attribute name="title"/>
+		<xsd:attribute name="type"/>
+		<xsd:attribute name="url"/>
+	</xsd:complexType>
+</xsd:schema>

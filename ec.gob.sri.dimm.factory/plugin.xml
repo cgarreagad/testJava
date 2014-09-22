@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="ec.gob.sri.dimm.factory.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="ec.gob.sri.dimm.factory.Perspective"
+            id="ec.gob.sri.dimm.factory.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="ec.gob.sri.dimm.factory.editors.EditorTest"
+            default="false"
+            id="ec.gob.sri.dimm.factory.editortest"
+            name="Editor Test">
+      </editor>
+      <editor
+            class="ec.gob.sri.dimm.factory.editors.EditorFormTest"
+            default="false"
+            id="ec.gob.sri.dimm.factory.editorFormtest"
+            name="EditorFormTest">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            description="Menu opciones"
+            id="ec.gob.sri.dimm.factory.menu"
+            name="Menu">
+      </category>
+      <command
+            categoryId="ec.gob.sri.dimm.factory.menu"
+            defaultHandler="ec.gob.sri.dimm.handler.EditorHandler"
+            description="Abre un editor"
+            id="ec.gob.sri.dimm.factory.openEditor"
+            name="Abrir Editor">
+      </command>
+      <command
+            defaultHandler="ec.gob.sri.dimm.handler.EditorFormHandler"
+            id="ec.gob.sri.dimm.factory.openFormEditor"
+            name="AbrirFormEditor">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="Menu Editores"
+               label="Menu">
+            <command
+                  commandId="ec.gob.sri.dimm.factory.openEditor"
+                  label="Editor"
+                  style="push">
+            </command>
+            <command
+                  commandId="ec.gob.sri.dimm.factory.openFormEditor"
+                  label="Abre Form Editor"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               label="Admin">
+            <command
+                  commandId="org.eclipse.ui.views.showView"
+                  label="Show Error View"
+                  style="push">
+               <parameter
+                     name="org.eclipse.ui.views.showView.viewId"
+                     value="org.eclipse.pde.runtime.LogView">
+               </parameter>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
