@@ -16,6 +16,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.databinding.property,
  org.eclipse.jface.databinding,
  com.ibm.icu,
- org.eclipse.pde.runtime;bundle-version="3.4.201"
+ ec.gob.sri.dimm.data;bundle-version="1.2.4"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

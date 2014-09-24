@@ -20,12 +20,16 @@ public class EditorFormTest extends EditorABT {
 	public static final String ID = "ec.gob.sri.dimm.factory.editorFormtest";
 	
 	PaginaSaldoFavor2 p1;
+	PaginaSaldoFavor p2;
 	@Override
 	protected void addPages() {
 		p1= new PaginaSaldoFavor2(this, "PAGINA_SALDOS", "Pagina Saldos a Favor");
-		
+		p2= new PaginaSaldoFavor(this, "PAGINA_SALDOS", "Pagina Saldos a Favor");
+		p2.setModeloDatos(modeloDatos.getSaldoFavor());
+		p2.inicializarModeloValores();
 		try {
 			addPage(p1);
+			addPage(p2);
 		} catch (PartInitException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -82,13 +82,16 @@ public class ConceptoCellModifier implements ICellModifier {
 		      public void run() {
 		    	  IWorkbench wb = PlatformUI.getWorkbench();
 		    	   IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-		    	   IWorkbenchPage page = win.getActivePage();
-		    	  IEditorPart a= page.getActiveEditor();
-		    	  // ((PaginaSaldoFavor2) page).setValorSuma(BigDecimal.TEN);
-		    	  EditorFormTest form =(EditorFormTest) a;
-		    	  
-		    	  //((PaginaSaldoFavor2)form.getActivePageInstance()).setValorSuma(BigDecimal.TEN);
-		    	  ((PaginaSaldoFavor2)form.getActivePageInstance()).recalcularSuma();
+		    	   if (win!=null){
+		    		   IWorkbenchPage page = win.getActivePage();
+				    	  IEditorPart a= page.getActiveEditor();
+				    	  // ((PaginaSaldoFavor2) page).setValorSuma(BigDecimal.TEN);
+				    	  EditorFormTest form =(EditorFormTest) a;
+				    	  
+				    	  //((PaginaSaldoFavor2)form.getActivePageInstance()).setValorSuma(BigDecimal.TEN);
+				    	  ((PaginaSaldoFavor2)form.getActivePageInstance()).recalcularSuma();
+		    	   }
+		    	   
 		    	  
 		    	 
 		      }

@@ -20,17 +20,24 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.forms.FormColors;
@@ -57,6 +64,7 @@ import ec.gob.sri.dimm.api.ui.util.eventos.AyudanteSelectionChangedEvent;
 import ec.gob.sri.dimm.factory.editing.ConceptoCellModifier;
 import ec.gob.sri.dimm.factory.editing.ConceptoLabelProvider;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 
 
@@ -274,13 +282,24 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 		tableViewer.setCellEditors(crearEditores(tableViewer));
 		
 		 lblNewLabel = new Label(composite, SWT.NONE);
+		 lblNewLabel.setAlignment(SWT.RIGHT);
+		 lblNewLabel.setFont(SWTResourceManager.getFont("Tahoma", 9, SWT.BOLD));
 		FormData fd_lblNewLabel = new FormData();
-		fd_lblNewLabel.right = new FormAttachment(0, 153);
 		fd_lblNewLabel.top = new FormAttachment(0);
-		fd_lblNewLabel.left = new FormAttachment(0, 10);
+		fd_lblNewLabel.right = new FormAttachment(0, 217);
 		lblNewLabel.setLayoutData(fd_lblNewLabel);
 		managedForm.getToolkit().adapt(lblNewLabel, true, true);
-		lblNewLabel.setText("New Label");
+		lblNewLabel.setText("0.0");
+		
+		Label lblSaldoAFavor = new Label(composite, SWT.NONE);
+		fd_lblNewLabel.left = new FormAttachment(lblSaldoAFavor, 35);
+		lblSaldoAFavor.setFont(SWTResourceManager.getFont("Tahoma", 9, SWT.BOLD));
+		FormData fd_lblSaldoAFavor = new FormData();
+		fd_lblSaldoAFavor.top = new FormAttachment(0);
+		fd_lblSaldoAFavor.left = new FormAttachment(0, 10);
+		lblSaldoAFavor.setLayoutData(fd_lblSaldoAFavor);
+		managedForm.getToolkit().adapt(lblSaldoAFavor, true, true);
+		lblSaldoAFavor.setText("Saldo a Favor:");
 		tableViewer.addSelectionChangedListener(getSeleccionListenerSaldoFavor());
 		//tableViewer.setLabelProvider(new SaldosLabelProvider());
 		
@@ -334,14 +353,14 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 	}
 
 	protected void exportarSectionXML() {
-		modeloDatos.setSaldoFavor(BigDecimal.TEN);
+		
 		
 		try {
 			for (ConceptoCodigo cod:modeloDatos.getConceptosSaldos().getConceptoSaldo()){
 				cod.setPropietario(null);
 			}
 			System.out.println("------->XML="+modeloDatos.toXML());
-			modeloDatos.setSaldoFavor(BigDecimal.TEN);
+
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -401,7 +420,7 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 			c.setMensaje("");
 			
 			modeloDatos.agregarConceptoCodigo(c);
-			modeloDatos.setSaldoFavor(new BigDecimal("20"));
+			
 			
 			//conceptos.add(c);
 			tableViewer.refresh();
@@ -436,8 +455,48 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 		
 		
 		
-		
-	    editors[1] = new TextCellEditor(table);
+		TextCellEditor moneyCell = new TextCellEditor(table);
+	    editors[1] =moneyCell;
+	    
+	    
+	    /*moneyCell.getControl().addListener(SWT.Verify, new Listener() {
+	        public void handleEvent(Event e) {
+	            String string = e.text;
+	            char[] chars = new char[string.length()];
+	            string.getChars(0, chars.length, chars, 0);
+	            for (int i = 0; i < chars.length; i++) {
+	              if (!('0' <= chars[i] && chars[i] <= '9')) {
+	                e.doit = false;
+	                return;
+	              }
+	            }
+	          }
+	        });*/
+	    
+	    ((Text)moneyCell.getControl()).addVerifyListener(new VerifyListener(){
+	    	  public void verifyText(VerifyEvent event) {
+	    		  
+	    		    // Assume we don't allow it
+	    			event.doit = false;
+	    		 
+	    		    // Get the character typed
+	    		    char myChar = event.character;
+	    		    //String text = ((Text) event.widget).getText();
+	    		 
+	    		 // Allow 0-9
+	    		   if (Character.isDigit(myChar)) event.doit = true;
+	    		 
+	    		   // Allow backspace
+	    		  if (myChar == '\b' || myChar=='.') {
+	    		     event.doit = true;
+	    		  	
+	    		    }
+	    		 }
+	    				  
+	    		});
+
+	    
+	    
 	    //editors[2] = new CheckboxCellEditor(table, SWT.CHECK | SWT.READ_ONLY);
 	    
 	    
@@ -499,8 +558,8 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 		for (ConceptoCodigo co:modeloDatos.getConceptosSaldos().getConceptoSaldo()){
 			suma = suma.add(co.getValor());
 		}
+		this.modeloDatos.setSaldoFavor(suma);
 		this.lblNewLabel.setText(suma.toString());
 		
 	}
-	
 }
