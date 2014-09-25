@@ -5,7 +5,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.HashMap;
 
+import javax.sound.midi.Receiver;
 import javax.xml.bind.JAXBException;
 
 import org.eclipse.core.databinding.DataBindingContext;
@@ -74,6 +76,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import swing2swt.layout.BorderLayout;
+import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+import org.eclipse.core.databinding.observable.map.IObservableMap;
+import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
+import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.observable.Realm;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 
 public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
@@ -152,7 +162,7 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		 });
 		table = tableViewer.getTable();
 		FormData fd_table = new FormData();
-		fd_table.top = new FormAttachment(20, -33);
+		fd_table.top = new FormAttachment(25, -33);
 		fd_table.bottom = new FormAttachment(100);
 		fd_table.right = new FormAttachment(0, 1266);
 		fd_table.left = new FormAttachment(0);
@@ -177,16 +187,23 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		tblclmnNewColumn_2.setAlignment(SWT.CENTER);
 		tblclmnNewColumn_2.setWidth(581);
 		
-		 lblNewLabel = new Label(managedForm.getForm().getBody(), SWT.NONE);
-		 lblNewLabel.setAlignment(SWT.RIGHT);
-		 lblNewLabel.setFont(SWTResourceManager.getFont("Tahoma", 9, SWT.BOLD));
-		 managedForm.getToolkit().adapt(lblNewLabel, true, true);
-		 lblNewLabel.setText("0.0");
-		
-		Label lblSaldoAFavor = new Label(managedForm.getForm().getBody(), SWT.NONE);
-		lblSaldoAFavor.setFont(SWTResourceManager.getFont("Tahoma", 9, SWT.BOLD));
-		managedForm.getToolkit().adapt(lblSaldoAFavor, true, true);
-		lblSaldoAFavor.setText("Saldo a Favor:");
+		Composite composite_2 = new Composite(managedForm.getForm().getBody(), SWT.NONE);
+		managedForm.getToolkit().adapt(composite_2);
+		managedForm.getToolkit().paintBordersFor(composite_2);
+		   composite_2.setLayout(null);
+		   
+		   Label lblSaldoAFavor = new Label(composite_2, SWT.NONE);
+		   lblSaldoAFavor.setBounds(397, 5, 86, 14);
+		   lblSaldoAFavor.setFont(SWTResourceManager.getFont("Tahoma", 9, SWT.BOLD));
+		   managedForm.getToolkit().adapt(lblSaldoAFavor, true, true);
+		   lblSaldoAFavor.setText("Saldo a Favor:");
+		   
+		    lblNewLabel = new Label(composite_2, SWT.NONE);
+		    lblNewLabel.setBounds(538, 5, 121, 14);
+		    lblNewLabel.setAlignment(SWT.RIGHT);
+		    lblNewLabel.setFont(SWTResourceManager.getFont("Tahoma", 9, SWT.BOLD));
+		    managedForm.getToolkit().adapt(lblNewLabel, true, true);
+		    lblNewLabel.setText("0.0");
 		
 		
 		
@@ -306,16 +323,16 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		
 		//cargardata();
 		//tableViewer.setContentProvider(ArrayContentProvider.getInstance());
-		tableViewer.setContentProvider(new ArrayContentProvider());
+		//tableViewer.setContentProvider(new ArrayContentProvider());
 		//tableViewer.setContentProvider(new ConceptoContentProvider());
-		tableViewer.setLabelProvider(new ConceptoLabelProvider());
-		tableViewer.setInput(modeloDatos.getConceptosSaldos().getConceptoSaldo());
+		//tableViewer.setLabelProvider(new ConceptoLabelProvider());
+		//tableViewer.setInput(modeloDatos.getConceptosSaldos().getConceptoSaldo());
 		tableViewer.refresh();
 		String[] PROPS= new String[]{"Concepto","Valor","Mensaje"};
-		tableViewer.setColumnProperties(PROPS);
-		tableViewer.setCellModifier(new ConceptoCellModifier(tableViewer));
+		//tableViewer.setColumnProperties(PROPS);
+		//tableViewer.setCellModifier(new ConceptoCellModifier(tableViewer));
 		//Editores de Celdas
-		tableViewer.setCellEditors(crearEditores(tableViewer));
+		//tableViewer.setCellEditors(crearEditores(tableViewer));
 		
 		ToolBar tbSaldos = new ToolBar(composite, SWT.FLAT | SWT.RIGHT);
 		tbSaldos.setLayoutData(new FormData());
@@ -333,27 +350,14 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		tltmNuevoRenCab.setText(Constantes.ETIQUETA_NUEVO);
 		
 		ToolItem tltmEditarRenCab = new ToolItem(tbSaldos, SWT.NONE);
-		//tltmEditarRenCab.addSelectionListener(getEditarConceptoCabSelectionAdapter());
+		tltmEditarRenCab.addSelectionListener(getEditarConceptoCabSelectionAdapter());
 		tltmEditarRenCab.setText(Constantes.ETIQUETA_EDITAR);
 		
 		ToolItem tltmEliminarRenCab = new ToolItem(tbSaldos, SWT.NONE);
-		//tltmEliminarRenCab.addSelectionListener(getEliminarConceptoCabSelectionAdapter());
+		tltmEliminarRenCab.addSelectionListener(getEliminarConceptoCabSelectionAdapter());
 		tltmEliminarRenCab.setText(Constantes.ETIQUETA_ELIMINAR);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		tableViewer.addSelectionChangedListener(getSeleccionListenerSaldoFavor());
 		//tableViewer.setLabelProvider(new SaldosLabelProvider());
@@ -362,25 +366,6 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		managedForm.getToolkit().adapt(toolBar);
 		managedForm.getToolkit().paintBordersFor(toolBar);
 		sctnNewSection.setTextClient(toolBar);
-		
-		ToolItem tltmNew = new ToolItem(toolBar, SWT.NONE);
-		
-		tltmNew.addSelectionListener(getCrearConceptoCodigoSelectionAdapter() );
-		
-		/*tltmNew.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				crearNuevoConcepto();
-			}
-		});*/
-		
-		tltmNew.setImage(ResourceManager.getPluginImage(Activator.PLUGIN_ID, "iconos/add_obj.gif"));
-		//tltmNew.setImage(ResourceManager.getPluginImage("ec.gob.sri.dimm.factory", "icons/add_obj.gif"));
-		
-		ToolItem tltmDelete = new ToolItem(toolBar, SWT.NONE);
-		tltmDelete.addSelectionListener(getEliminarConceptoCodigoSelectionAdapter());
-		//tltmDelete.setImage(ResourceManager.getPluginImage("ec.gob.sri.dimm.factory", "icons/delete_obj.gif"));
-		tltmDelete.setImage(ResourceManager.getPluginImage(Activator.PLUGIN_ID, "iconos/delete_obj.gif"));
 		
 		ToolItem tltmNewItem = new ToolItem(toolBar, SWT.NONE);
 		tltmNewItem.addSelectionListener(new SelectionAdapter() {
@@ -392,8 +377,6 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		//tltmNewItem.setImage(ResourceManager.getPluginImage("ec.gob.sri.dimm.factory", "icons/export.jpg"));
 		tltmNewItem.setImage(ResourceManager.getPluginImage(Activator.PLUGIN_ID, "iconos/export.jpg"));
 		m_bindingContext = initDataBindings();
-		
-		tltmNewItem.setEnabled(false);
 
 		
 		
@@ -411,21 +394,83 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		
 	}
 
+	private SelectionListener getEliminarConceptoCabSelectionAdapter() {
+
+		return new SelectionAdapter() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (conceptoSeleccionado!=null
+						&& mostrarConfirmacion("¿Está seguro de que desea eliminar el registro seleccionado?")
+						&& modeloDatos.getConceptosSaldos().eliminarCodigoConcepto(conceptoSeleccionado)
+						){
+					conceptoSeleccionado=null;
+					tableViewer.refresh();
+					getEditor().obtenerAdministradorPersistencia().serializarObjeto(modeloDatos.getPropietario());
+					recalcularSuma();
+				}
+			}
+		};
+	}
+
+
+
+
+	private SelectionListener getEditarConceptoCabSelectionAdapter() {
+		return new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (conceptoSeleccionado!=null){
+					ConceptoCodigo conceptEdit= conceptoSeleccionado.crearCopiaEdicion();
+					conceptEdit.setCodigoInicial(conceptoSeleccionado.getConcepto());
+					conceptEdit.setPropietario(modeloDatos.getConceptosSaldos());
+					
+					if (abrirDialogoConcepto(conceptEdit)){
+						conceptoSeleccionado.actualizarInformacion(conceptEdit);
+						tableViewer.refresh();
+						getEditor().obtenerAdministradorPersistencia().serializarObjeto(modeloDatos.getPropietario());
+						recalcularSuma();
+					}
+				}
+
+				super.widgetSelected(e);
+			}
+		};
+	}
+
+
+
+
 	private SelectionAdapter getNuevoConceptoCabSelectionAdapter() {
 		return new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				ConceptoCodigo concepto = new ConceptoCodigo();
 				concepto.setPropietario(modeloDatos.getConceptosSaldos());
+				
+				
 				if (abrirDialogoConcepto(concepto)) {
 					modeloDatos.agregarConceptoCodigo(concepto);					
 					// Guardar Modelo
 					getEditor().obtenerAdministradorPersistencia().serializarObjeto(modeloDatos.getPropietario());
+					tableViewer.refresh();
+					recalcularSuma();
 				}
 			}
 		};
 	}
 	
+	protected HashMap<String, String> obtenerCopdigosExistentes() {
+		HashMap<String,String> codigos = new HashMap<String, String>();
+		for (ConceptoCodigo con : modeloDatos.getConceptosSaldos().getConceptoSaldo()){
+			codigos.put(con.getConcepto(), con.getConcepto());
+		}
+		return codigos;
+	}
+
+
+
+
 	/*private SelectionAdapter getEditarConceptoCabSelectionAdapter() {
 		return new SelectionAdapter() {
 			@Override
@@ -464,6 +509,10 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		};
 	}*/
 	private boolean abrirDialogoConcepto(ConceptoCodigo concepto) {
+		HashMap<String, String> codigos = obtenerCopdigosExistentes();
+		concepto.setCodigosExistentes(codigos);
+		
+		
 		DialogoConceptoSaldo dRentaCab = new DialogoConceptoSaldo(getSite());
 		dRentaCab.setModeloDatos(concepto);
 		dRentaCab.setModeloValores(modeloValoresSaldo);
@@ -492,7 +541,7 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		return new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				crearNuevoConcepto();
+				
 			}
 		};
 	}
@@ -529,30 +578,7 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		
 	}
 
-	protected void crearNuevoConcepto() {
-		System.out.println("--->crearNuevoConcepto");
-		
-		if (modeloDatos.getConceptosSaldos().getConceptoSaldo().size()<=ConceptosTMP.INSTANCES.length ){
-			ConceptoCodigo c = new ConceptoCodigo();
-			c.setConcepto(BigInteger.ONE);
-			c.setValor(BigDecimal.ZERO);
-			c.setMensaje("");
-			
-			modeloDatos.agregarConceptoCodigo(c);
-			
-			
-			//conceptos.add(c);
-			tableViewer.refresh();
-			//modeloDatos.setSaldoFavor(new BigDecimal("20"));
-			
-			//lblNewLabel.setText("40");
-			//System.out.println("VAlor lbl="+lblNewLabel.getText());
-		}else{
-			MessageDialog.openWarning(new Shell(), "Para su información", "Ud. ha agregado el máximo permitido de conceptos");
-		}
-		
-		
-	}
+	
 
 	/*private void cargardata() {
 		
@@ -659,11 +685,6 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 	    
 	    return editors;
 	}
-	protected DataBindingContext initDataBindings() {
-		DataBindingContext bindingContext = new DataBindingContext();
-		//
-		return bindingContext;
-	}
 
 
 	public void setValorSuma(BigDecimal ten) {
@@ -675,7 +696,7 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 	public void recalcularSuma() {
 		BigDecimal suma=BigDecimal.ZERO;
 		for (ConceptoCodigo co:modeloDatos.getConceptosSaldos().getConceptoSaldo()){
-			suma = suma.add(co.getValor());
+			suma = suma.add(new BigDecimal( co.getValor()));
 		}
 		this.modeloDatos.setSaldoFavor(suma);
 		this.lblNewLabel.setText(suma.toString());
@@ -689,5 +710,18 @@ public class PaginaSaldoFavor  extends PaginaBase<EditorABT>  {
 		
 		modeloValoresSaldo = new ModeloValoresSaldoFavor();
 		modeloValoresSaldo.inicializar();
+	}
+	protected DataBindingContext initDataBindings() {
+		DataBindingContext bindingContext = new DataBindingContext();
+		//
+		ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
+		IObservableMap[] observeMaps = BeansObservables.observeMaps(listContentProvider.getKnownElements(), ConceptoCodigo.class, new String[]{"descripcion", "valor"});
+		tableViewer.setLabelProvider(new ObservableMapLabelProvider(observeMaps));
+		tableViewer.setContentProvider(listContentProvider);
+		//
+		IObservableList modeloDatosgetConceptosSaldosConceptoSaldoObserveList = BeansObservables.observeList(Realm.getDefault(), modeloDatos.getConceptosSaldos(), "conceptoSaldo");
+		tableViewer.setInput(modeloDatosgetConceptosSaldosConceptoSaldoObserveList);
+		//
+		return bindingContext;
 	}
 }

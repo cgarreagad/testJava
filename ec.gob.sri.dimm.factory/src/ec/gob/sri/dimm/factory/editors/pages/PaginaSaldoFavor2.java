@@ -373,7 +373,7 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 		return new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				crearNuevoConcepto();
+				//crearNuevoConcepto();
 			}
 		};
 	}
@@ -410,31 +410,7 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 		
 	}
 
-	protected void crearNuevoConcepto() {
-		System.out.println("--->crearNuevoConcepto");
-		
-		if (modeloDatos.getConceptosSaldos().getConceptoSaldo().size()<=AgeRange2.INSTANCES.length ){
-			ConceptoCodigo c = new ConceptoCodigo();
-			c.setConcepto(BigInteger.ONE);
-			c.setValor(BigDecimal.ZERO);
-			c.setMensaje("");
-			
-			modeloDatos.agregarConceptoCodigo(c);
-			
-			
-			//conceptos.add(c);
-			tableViewer.refresh();
-			//modeloDatos.setSaldoFavor(new BigDecimal("20"));
-			
-			//lblNewLabel.setText("40");
-			//System.out.println("VAlor lbl="+lblNewLabel.getText());
-		}else{
-			MessageDialog.openWarning(new Shell(), "Para su información", "Ud. ha agregado el máximo permitido de conceptos");
-		}
-		
-		
-	}
-
+	
 	private void cargardata() {
 		
 		this.modeloDatos = new SaldoContribuyente();
@@ -556,7 +532,7 @@ public class PaginaSaldoFavor2  extends PaginaBase<EditorABT>  {
 	public void recalcularSuma() {
 		BigDecimal suma=BigDecimal.ZERO;
 		for (ConceptoCodigo co:modeloDatos.getConceptosSaldos().getConceptoSaldo()){
-			suma = suma.add(co.getValor());
+			suma = suma.add( new BigDecimal( co.getValor()));
 		}
 		this.modeloDatos.setSaldoFavor(suma);
 		this.lblNewLabel.setText(suma.toString());
