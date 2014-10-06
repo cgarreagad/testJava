@@ -37,7 +37,7 @@ public class ConceptoCellModifier implements ICellModifier {
 	public Object getValue(Object element, String property) {
 		ConceptoCodigo c = (ConceptoCodigo) element;
 		if (property.equals("Concepto")){
-			return c.getConcepto().intValue();
+			return c.getConcepto();
 		}else if (property.equals("Valor")){
 			return ""+c.getValor();
 		}else if (property.equals("Mensaje")){
@@ -55,17 +55,17 @@ public class ConceptoCellModifier implements ICellModifier {
 	    
 		ConceptoCodigo c = (ConceptoCodigo) element;
 		if (property.equals("Concepto")){
-			c.setConcepto(new BigInteger(value.toString()));
+			c.setConcepto(value.toString());
 		}else if (property.equals("Valor")){
 			String valor =value.toString().replace(",", ".");
 			if (!valor.contains(".")){
 				valor=valor.concat(".00");
 			}
 			if (validarValor(valor,element)){
-				c.setValor(new BigDecimal(value.toString()));
+				c.setValor(value.toString());
 				c.setMensaje("");
 			}else{
-				c.setValor(BigDecimal.ZERO);
+				c.setValor("0");
 			}
 			
 		}/*else if (property.equals("Seleccion")){

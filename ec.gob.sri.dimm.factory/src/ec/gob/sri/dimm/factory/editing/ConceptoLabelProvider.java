@@ -75,7 +75,8 @@ public class ConceptoLabelProvider implements ITableLabelProvider, IColorProvide
 		ConceptoCodigo c = (ConceptoCodigo) element;
 		switch (columnIndex) {
 	    case 0:
-	    	 return AgeRange2.INSTANCES[c.getConcepto().intValue()];
+	    	 //return AgeRange2.INSTANCES[c.getConcepto().intValue()];
+	    	 return "0";
 	      //return c.getConcepto().toString();
 	    case 1:
 	      return c.getValor().toString();

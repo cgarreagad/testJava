@@ -12,6 +12,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import ec.gob.sri.dimm.abt.modelo.obj.ModeloBeneficiosTributarios;
+import ec.gob.sri.dimm.abt.ui.editores.EditorABT;
 import ec.gob.sri.dimm.abt.ui.editores.InputEditorABT;
 import ec.gob.sri.dimm.factory.editors.EditorFormTest;
 import ec.gob.sri.dimm.factory.editors.EditorTest;
@@ -38,7 +39,11 @@ public class EditorFormHandler extends AbstractHandler implements IHandler {
 			modeloDatos.getDatosInformante().setRazonSocial("TEST");
 			datosInput.setModeloDatos(modeloDatos);
 			
-			page.openEditor(datosInput, EditorFormTest.ID);
+			//page.openEditor(datosInput, EditorFormTest.ID);
+			
+			page.openEditor(datosInput, EditorABT.ID);
+			
+			
 			
 			
 		} catch (PartInitException e) {

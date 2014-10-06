@@ -1,5 +1,6 @@
 package pruebas;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
@@ -8,13 +9,31 @@ import java.util.Locale;
 
 import javax.xml.bind.JAXBException;
 
+import org.w3c.dom.Document;
+
+import ec.gob.sri.dimm.abt.modelo.impl.AdministradorModeloABT;
+import ec.gob.sri.dimm.abt.modelo.obj.ModeloBeneficiosTributarios;
 import ec.gob.sri.dimm.abt.modelo.obj.saldos.ConceptoCodigo;
 import ec.gob.sri.dimm.abt.modelo.obj.saldos.SaldoContribuyente;
+import ec.gob.sri.dimm.api.modelo.persistencia.AdministradorPersistencia;
+import ec.gob.sri.dimm.data.impl.DataCatalogos;
 
 public class PruebasXML {
 	public static void main(String[] args) {
 		//saldoContribuyente();
-		formateando();
+		//formateando();
+		pruebaImportancion();
+	}
+
+	private static void pruebaImportancion() {
+		
+		DataCatalogos.inicializarData();
+		File archivoXMLSeleccionado=new File("D:\\ABTCB.xml");
+		Document documentoXML = AdministradorPersistencia.obtenerDocumento(archivoXMLSeleccionado.getAbsolutePath());
+		AdministradorModeloABT administradorModelo = new AdministradorModeloABT();
+		ModeloBeneficiosTributarios modeloImportado = administradorModelo.importar(documentoXML);
+		System.out.println("ModeloBeneficiosTributarios="+modeloImportado);
+		
 	}
 
 	private static void formateando() {
@@ -34,6 +53,9 @@ public class PruebasXML {
        // String s = String.format("%.2f",978778);
 		
 		//System.out.println(s);
+		
+		String mensajeMoney="%s: Se admiten sólo 12 enteros y 2 decimales";
+		System.out.println(String.format(mensajeMoney, "Utilidad contable"));
 		
 	}
 
