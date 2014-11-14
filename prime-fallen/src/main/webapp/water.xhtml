@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<f:facet name="last">
+		<h:outputStylesheet library="mistemas" name="css/style.css" />
+	</f:facet>
+
+	<h1>PrimeFaces watermark example</h1>
+
+	<div style="width: 500px;">
+		<h:form>
+			<p:inputText id="username" required="true" label="username" size="40"
+				requiredMessage="Please enter your username."
+				value="#{userBean.username}">
+				<f:validateLength minimum="3" maximum="20" />
+			</p:inputText>
+			<p:watermark for="username" value="Username *" />
+			<p:message for="username" />
+
+			<p:commandButton value="test" style="margin:20px"
+				action="#{userBean.register}" ajax="false" />
+
+		</h:form>
+	</div>
+
+</h:body>
+</html>

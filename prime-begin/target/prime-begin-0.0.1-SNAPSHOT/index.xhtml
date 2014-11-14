@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<script type="text/css">
+.style-1 input[type="text"] {
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+.style-1 input[type="text"]:focus,
+.style-1 input[type="text"].focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+.ui-inputfield.ui-state-focus {
+  background: red;
+  color: white;
+}
+</script>
+
+</h:head> 
+<body> 
+	<f:facet name="last">
+		<h:outputStylesheet library="mytheme" name="css/style.css" />
+	</f:facet>
+ 	<p:panelGrid styleClass="style-1">
+		<p:inputText label="Ingrese:" />
+		<p:inputText label="Ingrese2:" />
+	</p:panelGrid>
+	
+	<h1>PrimeFaces watermark example</h1>
+
+	<div style="width: 500px;">
+		<h:form>
+			<p:inputText id="username" required="true" label="username" size="40"
+				requiredMessage="Please enter your username."
+				value="#{userBean.username}">
+				<f:validateLength minimum="3" maximum="20" />
+			</p:inputText>
+			<p:watermark for="username" value="Username *" />
+			<p:message for="username" />
+
+			<p:commandButton value="test" style="margin:20px"
+				action="#{userBean.register}" ajax="false" />
+
+		</h:form>
+	</div>
+	
+	<ul class="input-list style-1 clearfix">
+    <li>
+      <p:inputText label="TEST1:" />
+    </li>
+    <li>
+      <p:inputText label="TEST2:" />
+    </li>
+  </ul>
+	
+</body> 
+</html>

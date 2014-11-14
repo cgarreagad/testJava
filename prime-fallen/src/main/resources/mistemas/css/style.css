@@ -1,0 +1,52 @@
+
+input.text,input[type="text"] {
+	border: 1px solid #EAEAEA;
+	background: #EAEAEA;
+	margin: 0;
+	font-size: 1.2em;
+	color: #444;
+	padding: 15px;
+}
+
+/*** override primefaces style ***/
+.ui-message-info,.ui-message-error,.ui-message-warn,.ui-message-fatal {
+	border: 0;
+	margin: 4px 0 0 10px;
+	padding: 0;
+}
+
+.ui-messages-error,.ui-message-error {
+	color: #A12A2A;
+	background-color: #fff;
+}
+
+.ui-message-error-icon {
+	height: 0;
+	width: 0;
+	background: none;
+	float: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.ui-state-error {
+	border-color: #A12A2A !important;
+	background-color: #F9E8E8 !important;
+}
+
+/** html placeholder style **/
+::-webkit-input-placeholder {
+	color: #9A9DA1 !important;
+	font-weight: normal !important;
+}
+
+:-moz-placeholder {
+	color: #9A9DA1 !important;
+	font-weight: normal !important;
+}
+
+.ui-watermark {
+	color: #9A9DA1 !important;
+	font-weight: normal !important;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.style-1 input[type="text"] {
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+.style-1 input[type="text"]:focus,
+.style-1 input[type="text"].focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+</style>
+</head>
+<body>
+
+<form name="input" action="" method="get" class="style-1">
+  Firstname:<input type="text" name="Name" value="Peter" size="20">
+  Lastname:<input type="text" name="Name" value="Griffin" size="20">
+  <input type="button" value="Example Button">
+</form>
+
+<div align="center">you content</div>
+<section>
+  <h2>Section Title</h2>
+  <ul class="input-list style-1 clearfix">
+    <li>
+      <input type="text" placeholder=":input">
+    </li>
+    <li>
+      <input type="text" placeholder=":focus" class="focus">
+    </li>
+  </ul>
+</section>
+
+</body>
+</html>
