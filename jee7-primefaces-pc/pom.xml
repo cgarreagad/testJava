@@ -75,7 +75,17 @@
 		<groupId>javax.enterprise</groupId>
 		<artifactId>cdi-api</artifactId>
 		<scope>provided</scope>
-	</dependency>  
+	</dependency>
+	<dependency>
+		<groupId>com.googlecode.webutilities</groupId>
+		<artifactId>webutilities</artifactId>
+		<version>0.0.7</version>
+	</dependency>
+	<dependency>
+		<groupId>org.primefaces.extensions</groupId>
+		<artifactId>primefaces-extensions</artifactId>
+		<version>3.0.0</version>
+	</dependency>
   </dependencies>
   <packaging>war</packaging>
 </project>

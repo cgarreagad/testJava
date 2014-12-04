@@ -8,8 +8,15 @@
 <h:head>Pruebas de controles</h:head> 
 <body> 
 
-
-<p:inputText id="txt1" required="true" requiredMessage="Por favor ingrese en el input"/>
-
+<h:panelGrid columns="2">
+	<p:outputLabel for="txt1" value="Texto:"/>
+	<p:inputText id="txt1" required="true" requiredMessage="Por favor ingrese en el input"/>
+	<p:outputLabel for="calendar" value="Calendar:"/>
+	<p:calendar id="calendar" showOn="button"/>
+	<p:outputLabel for="calendar1" value="Calendar:"/>
+	<p:calendar id="calendar1" showOn="button"/>
+	<p:outputLabel for="editor" id="Editor"/>
+	<p:editor id="editor" width="600"/>
+</h:panelGrid>
 </body> 
 </html>
