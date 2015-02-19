@@ -1,65 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>jee7-primefaces-pc</display-name>
-  <context-param>
-  	<param-name>primefaces.THEME</param-name>
-  	<param-value>none</param-value>
-  </context-param>
-  
-  <context-param>
-  	<param-name>primefaces.UPLOADER</param-name>
-  	<param-value>auto</param-value>
-  </context-param>
-  
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.jsf</url-pattern>
-  </servlet-mapping>
-
-  <filter>
-        <filter-name>compressionFilter</filter-name>
-        <filter-class>com.googlecode.webutilities.filters.CompressionFilter</filter-class>
-        <init-param> 
-                <param-name>compressionThreshold</param-name>
-                <param-value>1024</param-value> <!-- compress anything above 1kb -->
-        </init-param>
-        <init-param> 
-                <param-name>ignoreURLPattern</param-name>
-                <param-value>.*\.(flv|mp3|mpg)</param-value> <!-- regex -->
-        </init-param>
-        <init-param> 
-                <param-name>ignoreMIMEPattern</param-name>
-                <param-value>image/.*|video/.*|multipart/x-gzip</param-value> <!-- ignore -->
-        </init-param>
-        <init-param> 
-                <param-name>ignoreUserAgentsPattern</param-name>
-                <param-value>.*MSIE.*</param-value> <!-- regex -->
-        </init-param>
+<web-app id="WebApp_ID" version="3.0"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ <display-name>jee7-primefaces-pc</display-name>
+ <!--  
+ <context-param>
+  <param-name>javax.faces.PROJECT_STAGE</param-name>
+  <param-value>Production</param-value>
+ </context-param>
+ <context-param>
+  <param-name>com.sun.faces.defaultResourceMaxAge</param-name>
+  <param-value>2592000000</param-value>
+ </context-param>
+-->
+ <context-param>
+  <param-name>primefaces.THEME</param-name>
+  <param-value>bootstrap</param-value>
+ </context-param>
+ <context-param>
+  <param-name>primefaces.UPLOADER</param-name>
+  <param-value>auto</param-value>
+ </context-param>
+ <filter>
+  <filter-name>responseCacheFilter</filter-name>
+  <filter-class>com.googlecode.webutilities.filters.ResponseCacheFilter</filter-class>
+  <init-param>
+   <param-name>resetTime</param-name>
+   <param-value>2592000000</param-value>
+  </init-param>
+  <init-param>
+   <param-name>reloadTime</param-name>
+   <param-value>2592000000</param-value>
+  </init-param>
  </filter>
-  <filter>
-        <filter-name>yuiMinFilter</filter-name>
-        <filter-class>com.googlecode.webutilities.filters.YUIMinFilter</filter-class>
-        <!-- All the init params are optional and are equivalent to YUICompressor command line options --> 
-        <init-param> 
-                <param-name>lineBreak</param-name>
-                <param-value>8000</param-value>
-        </init-param>
- </filter>
-
 <filter-mapping>
-   <filter-name>compressionFilter</filter-name>
-   <url-pattern>*</url-pattern>
-</filter-mapping>
-<filter-mapping>
-   <filter-name>yuiMinFilter</filter-name>
+   <filter-name>responseCacheFilter</filter-name>
    <url-pattern>*.js</url-pattern>
    <url-pattern>*.json</url-pattern>
    <url-pattern>*.css</url-pattern>
+   <url-pattern>*.jsf</url-pattern>
  </filter-mapping>
+<<<<<<< HEAD
  
 </web-app>
+=======
+ <servlet>
+  <servlet-name>Faces Servlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.jsf</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet>
+        <servlet-name>JSCSSMergeServlet</servlet-name>
+        <servlet-class>com.googlecode.webutilities.servlets.JSCSSMergeServlet</servlet-class>
+        <!-- This init param is optional and default value is minutes for 7 days in future. --> 
+        <init-param>
+                <param-name>expiresMinutes</param-name>
+                <param-value>43200</param-value> <!-- for 30 days -->
+        </init-param>
+        <!-- This init param is also optional and default value is "public".-->
+        <init-param>
+                <param-name>cacheControl</param-name>
+                <param-value>public</param-value> 
+        </init-param>
+ </servlet>
+  <servlet-mapping>
+   <servlet-name>JSCSSMergeServlet</servlet-name>
+   <url-pattern>*.js</url-pattern>
+   <url-pattern>*.json</url-pattern>
+   <url-pattern>*.css</url-pattern>
+   <url-pattern>*.png</url-pattern>
+   <url-pattern>*.jpg</url-pattern>
+   <url-pattern>*.gif</url-pattern>
+   <url-pattern>*.jsf</url-pattern>
+ </servlet-mapping>
+</web-app>
+>>>>>>> branch 'master' of https://github.com/cgarreagad/testJava.git

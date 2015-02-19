@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>Pruebas de controles
+</h:head> 
+<body> 
+<h:form>
+    <p:growl id="msgs" showDetail="true" />
+    <p:fieldset legend="Toggleable" toggleable="true" toggleSpeed="500">
+        <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
+        <h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="txt1" value="Texto:"/>
+				<p:inputText id="txt1" required="true" requiredMessage="Por favor ingrese en el input"/>
+				<p:outputLabel for="txt2" value="Texto:"/>
+				<p:inputText id="txt2" required="true" requiredMessage="Por favor ingrese en el input"/>
+				<p:outputLabel for="txt3" value="Texto:"/>
+				<p:inputText id="txt3" required="true" requiredMessage="Por favor ingrese en el input"/>	
+				<p:outputLabel for="calendar" value="Calendar:"/>
+				<p:calendar id="calendar" showOn="button"/>							
+        </h:panelGrid>
+    </p:fieldset>
+</h:form>
+</body> 
+</html>
