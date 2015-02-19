@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>Pruebas de controles
+ <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+
+</h:head> 
+<body> 
+
+<h:panelGrid columns="2">
+	<p:outputLabel for="txt1" value="Texto:"/>
+	<p:inputText id="txt1" required="true" requiredMessage="Por favor ingrese en el input"/>
+	
+	<p:outputLabel for="calendar" value="Calendar:"/>
+	<p:calendar id="calendar" showOn="button"/>
+	
+	<p:outputLabel for="calendar1" value="Calendar:"/>
+	<p:calendar id="calendar1" showOn="button"/>
+	
+
+	
+	
+	
+	<p:outputLabel for="editor" id="Editor"/>
+	<p:editor id="editor" width="600"/>
+		<h:form enctype="multipart/form-data">
+                <p:fileUpload value="#{fileUploadManagedBean.file}"  mode="simple"></p:fileUpload>
+                <p:separator/>
+                <h:commandButton value="Dummy Action" action="#{fileUploadManagedBean.dummyAction}"></h:commandButton>
+        </h:form>
+</h:panelGrid>
+</body> 
+</html>

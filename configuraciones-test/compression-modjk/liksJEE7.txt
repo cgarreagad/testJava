@@ -1,0 +1,165 @@
+2013
+http://zeroturnaround.com/rebellabs/the-curious-coders-java-web-frameworks-comparison-spring-mvc-grails-vaadin-gwt-wicket-play-struts-and-jsf/
+
+2014
+http://zeroturnaround.com/rebellabs/top-4-java-web-frameworks-revealed-real-life-usage-data-of-spring-mvc-vaadin-gwt-and-jsf/
+
+http://blog.aquait.info/2009/09/como-elegir-un-framework-web/
+
+http://java-source.net/open-source/web-frameworks
+
+raibledesigns.com/rd/page/publications
+
+code.tutsplus.com/tutorials/15-most-important-considerations-when-choosing-a-web-development-framework--net-8035
+
+http://codejava.net/books/top-8-books-for-java-web-frameworks-in-2014
+http://www.camtic.org/actualidad-tic/oracle-anuncia-la-disponibilidad-de-java-platform-enterprise-edition-7/
+http://www.oracle.com/technetwork/java/javaee/overview/compatibility-jsp-136984.html
+http://www.mastertheboss.com/jboss-web/richfaces/primefaces-vs-richfaces-vs-icefaces
+
+
+-https://www.oracle.com/javaone/sessions/index.html
+-http://www.oracle.com/technetwork/java/index.html#tab1
+-https://github.com/javaee-samples/javaee7-samples
+
+**************************************************
+
+http://webdesigncube.com/2014/best-responsive-html5-frameworks/
+http://www.sitepoint.com/best-web-designing-frameworks-2014/
+http://www.sitepoint.com/html-css/
+
+http://howtodoinjava.com/2013/07/22/5-popular-java-development-frameworks/
+* https://blogs.oracle.com/arungupta/entry/java_ee_7_key_features
+* http://www.h-online.com/developer/features/Java-EE-7-at-a-glance-1889207.html
+
+
+******************* ANGULAR *********************
+http://showcase.angularfaces.com/
+
+https://www.ng-book.com/
+http://www.amazon.com/Pro-AngularJS-Experts-Voice-Development/dp/1430264489/ref=pd_sim_b_3?ie=UTF8&refRID=1HHV8R2MBETH7NNB131Z
+
+http://angularfaces.com/#/
+http://codecondo.com/3-free-books-for-learning-angularjs/
+http://carlosazaustre.es/blog/empezando-con-angular-js/
+
+*******************  SPA ******************************
+http://www.formandome.es/javascript/spa-arquitectura-caracteristicas/
+http://media.formandome.es/phonegap/presentacion/phonegap_arquitectura.html#/
+
+
+******************************** JOBSS *******************************
+http://blog.arungupta.me/2014/08/jboss-eap-63-now-available/
+http://www.infoq.com/news/2014/02/wildfly8-launch
+http://stackoverflow.com/questions/7648897/jboss-7-not-java-ee6-certified
+http://www.javacodegeeks.com/2013/01/selecting-your-java-ee-6-application-server.html
+
+-http://zeroturnaround.com/rebellabs/10-kick-ass-technologies-modern-developers-love/10/-
+-http://ocpsoft.org/prettyfaces/
+-http://www.gisfaces.com/
+-http://en.wikipedia.org/wiki/OpenMRS
+-http://arjan-tijms.omnifaces.org/2013/10/the-most-popular-java-ee-7-technologies.html
+-http://blog.primefaces.org/
+-http://mgreau.com/posts/2013/12/10/jboss-eap-62-51-43-javaee-supported.html
+-http://blog.servidoresdeaplicaciones.com/category/servidores-de-aplicaciones/jbossas/wildfly/
+-http://blog.servidoresdeaplicaciones.com/2012/10/14/monitorizar-un-servidor-tomcat-con-jmx/
+
+/*********************************** NOTAS PLATI*************************************************/
+
+JSR - JSF= JSR 344
+
+Just to give an update, JBoss 7.1.x is Java EE 6 Full Profile certified. JBoss 7.1.0.Final was released on 2012-02-16.
+
+
+Documentos a presentar
+
+1. Roadmaps JEE y Jboss EAP (Introduccion, alcances, graficos)
+
+2. WEb frameworks (# , introduccion, alcances, breve descripcion de cada framework, comparativa, conclusiones y recomendaciones, referencias )
+
+
+
+
+/**************************************** WOP (Web Performance Optimization)***********************************/
+
+TOOLS=Las ya archiconocidas Google Pagespeed y Yahoo YSlow, ambas instaladas como extensión de navegador.
+A mi me gusta mucho esta herramienta que te da a elegir la ubicacion del servidor http://www.webpagetest.org/
+
+--------------
+
+LINEAMINETOS GOOGLE:http://www.googleessimple.com/page-speed-insights.html
+-----------------------------------------
+ OPTIMIZACION
+
+- Peso,internet mas rapido,evitamos con el diseño
+-exceso de graficos
+
+http://www.jorgeoyhenard.com/optimizacion-de-sitios-web-velocidad-y-seo/4044/
+http://octuweb.com/wpo-optimizando-webs-alto-trafico
+http://blog.hubspot.com/blog/tabid/6307/bid/30303/The-Only-Metrics-You-Need-to-Optimize-Website-Performance.aspx
+http://www.sitepoint.com/complete-guide-reducing-page-weight/
+http://pumpun.com/wpo-web-performance-optimization/
+https://developer.yahoo.com/performance/rules.html
+https://community.compuwareapm.com/community/display/PUB/Best+Practices+on+Web+Site+Performance+Optimization
+http://blog.oio.de/2013/05/06/jsf-performance-tuning/
+----------------------------------------------------
+ELEMENTOS COMUNES UTILIZADOS
+inputext, outputtext, radio button, checkbox, panelgrid
+comboBox
+
+-http://www.solophotoshop.com/revista/
+-http://www.paradigmatecnologico.com/blog/se-puede-hacer-una-gran-aplicacion-con-groovy-y-grails/
+-http://wildfly.org/news/2014/04/25/Getting-Started-WildFly-OpenShift/
+-http://www.smooks.org/mediawiki/index.php?title=Main_Page
+http://docs.jboss.org/tools/OLD/3.1.0.GA/en/jboss_smooks_plugin_ref_guide/html/introduction.html
+www.primefaces.org/showcase-ext/sections/layout/iframePage.jsf;jsessionid=13qynorr7lp2x1guaz2s2nbifd
+-http://hawt.io/
+http://blog.primefaces.org/?p=3248
+http://blog.primefaces.org/?p=3132
+http://www.adictosaltrabajo.com/tutoriales/tutoriales.php?pagina=CDIWeldArquilian
+http://www.timetoast.com/timelines/historia-del-software-libre--92
+-http://www.cristinaalcantarilla.com/herramientas-de-monitoreo-de-red/
+TEMAS A ESTUDIAR CONMCURSO: ITIL, PLANIFICACION TI, JEE-patrones de diseño, ESTATUTO ORGANICO, 
+
+
+guayaquil y espejo
+
+CALCULO DEL TIEMPO DE DESCARA DE PAGINAS O ARCHIVOS:
+http://www.t1shopper.com/tools/calculate/downloadcalculator.php
+http://asperasoft.com/performance-calculator/
+http://www.databarracks.com/support/bandwidth-calculator/
+http://www.webhostingsecretrevealed.net/blog/web-hosting-guides/how-much-bandwidth-does-your-site-really-need/
+http://www.convert-me.com/en/convert/data_transfer_rate/
+-https://amatellanes.wordpress.com/2014/02/25/django-heroku-desplegando-una-aplicacion-django-en-heroku/
+-http://24timezones.com/us_map/usa_time_es.htm
+-http://24timezones.com/us_map/usa_time_es.htm
+
+
+http://www.journaldev.com/2990/primefaces-5-jsf-2-beginners-example-tutorial
+http://www.beyondjava.net/blog/primefaces-5-1/
+
+TEMPLATES
+http://softwarecave.org/2014/02/07/jsf-facelets-templates/
+http://www.techpages.org/jsf/jsf-primefaces-template-layout/2426/
+http://java.dzone.com/articles/how-do-10-common-tasks-jsf-20
+http://www.mkyong.com/jsf2/jsf-2-templating-with-facelets-example/
+
+
+calendar
+http://www.journaldev.com/3088/primefaces-calendar-component-example-tutorial
+
+
+BOOKS:
+https://github.com/sudheerj/primefaces-blueprints
+Pro JSF and HTML5: Building Rich Internet Components (Expert's Voice in Java) 
+Beginning EJB 3, Java EE, 7th Edition
+Beginning Java EE 7 (Expert Voice in Java)
+http://www.amazon.com/Pro-JPA-Experts-Voice-Java/dp/1430249269/ref=pd_sim_b_2?ie=UTF8&refRID=1ZV95SZV6CXY9D58HX1H
+http://www.amazon.com/PrimeFaces-Blueprints-Sudheer-Jonna/dp/1783983221
+http://www.amazon.com/PrimeFaces-Blueprints-Sudheer-Jonna/dp/1783983221/ref=sr_1_fkmr0_1?s=books&ie=UTF8&qid=1417123381&sr=1-1-fkmr0&keywords=primefaces+5.1
+http://primefaces.googlecode.com/svn/showcase/trunk
+
+
+OBSERVACIONES CARMEN
+
+- 
